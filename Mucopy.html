@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+.page{
+    display:none;
+    width:90%;
+    max-width:700px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.active{
+    display:block;
+}
+
+h1{
+    color:#ff2d55;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:20px;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 28px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    margin:10px;
+    font-size:18px;
+    background:#ff2d55;
+    color:white;
+}
+
+#noBtn{
+    position:absolute;
+}
+
+img{
+    width:300px;
+    border:12px solid white;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+    transform:rotate(-5deg);
+}
+
+input{
+    width:80%;
+    padding:12px;
+    font-size:18px;
+    margin-top:20px;
+}
+
+#typewriter{
+    font-size:24px;
+    line-height:1.8;
+    white-space:pre-wrap;
+}
+</style>
+
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+
+<img src="C:\Users\hk164\Downloads\android-sdk\cmdline-tools\latest\MukeshBdaySuprise\Images\MuviPgimg1.jpeg" class="round-img">
+
+<p>Mukesh, Will you be my Valentine? 🥰❤️</p>
+
+<button onclick="showPage(2)">YES 😘</button>
+
+<button id="noBtn">NO 🤪</button>
+
+<br><br>
+
+<p class="hint">Don't waste your time following the "No" button da! 😅🤭</p>
+
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+
+<h1>Happy Birthday ❤️</h1>
+
+<img src="photo1.jpg">
+
+<p>
+Happy Birthday to the most special person in my life.
+</p>
+
+<button onclick="startSlideshow()">Next</button>
+
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+
+<h1>Our Memories ❤️</h1>
+
+<img id="slideImage" src="photo1.jpg">
+
+<p id="caption"></p>
+
+<button id="nextPage4" style="display:none;" onclick="showPage(4)">Next ❤️</button>
+
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+
+<h1>One Last Question ❤️</h1>
+
+<p>What do you love most about me?</p>
+
+<input placeholder="Type here..." id="answer">
+
+<br><br>
+
+<button onclick="submitAnswer()">Submit</button>
+
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+
+<h1>My Message ❤️</h1>
+
+<p id="typewriter"></p>
+
+</div>
+
+<script>
+
+function showPage(page){
+
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+
+document.getElementById("page"+page).classList.add("active");
+
+}
+
+/* Moving NO Button */
+
+const no=document.getElementById("noBtn");
+
+no.addEventListener("mouseover",()=>{
+
+let x=Math.random()*(window.innerWidth-120);
+
+let y=Math.random()*(window.innerHeight-70);
+
+no.style.left=x+"px";
+
+no.style.top=y+"px";
+
+});
+
+/* Slideshow */
+
+const photos=[
+"photo1.jpg",
+"photo2.jpg",
+"photo3.jpg",
+"photo4.jpg",
+"photo5.jpg",
+"photo6.jpg"
+];
+
+const captions=[
+"Our first smile ❤️",
+"Our happiest day 🥰",
+"Forever together 💕",
+"You make me smile 😊",
+"My favourite memory ❤️",
+"Love You Forever 💖"
+];
+
+let index=0;
+
+function startSlideshow(){
+
+showPage(3);
+
+document.getElementById("slideImage").src=photos[index];
+
+document.getElementById("caption").innerHTML=captions[index];
+
+let interval=setInterval(()=>{
+
+index++;
+
+if(index<photos.length){
+
+document.getElementById("slideImage").src=photos[index];
+
+document.getElementById("caption").innerHTML=captions[index];
+
+}else{
+
+clearInterval(interval);
+
+document.getElementById("nextPage4").style.display="inline-block";
+
+}
+
+},30000);
+
+}
+
+/* Submit */
+
+function submitAnswer(){
+
+showPage(5);
+
+typeWriter();
+
+}
+
+/* Typewriter */
+
+const message=`Happy Birthday My Love ❤️
+
+Thank you for being my happiness.
+
+You are my safe place,
+my best friend,
+and my forever.
+
+No matter what happens,
+I will always choose YOU.
+
+I Love You Forever ❤️
+
+- Yours,
+Vijayalakshmi ❤️`;
+
+let i=0;
+
+function typeWriter(){
+
+if(i<message.length){
+
+document.getElementById("typewriter").innerHTML+=message.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,70);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

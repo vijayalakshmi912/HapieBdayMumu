@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="hearts-container"></div>
+
+    <!-- ONE continuous song — starts on Page 1 and keeps playing all
+         the way through to Page 5 (auto-lowers only while the Page 3
+         video is playing so its own audio can be heard).
+         Put your song file at Songs/BgSong.mp3 -->
+    <audio id="bgMusic" loop>
+        <source src="Songs/BgSong.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Paper falling pieces container -->
+    <div id="paper-container"></div>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="page active" id="page1">
+    <img src="Images/MuviPgimg1.jpeg" class="round-img" alt="Mukesh">
+    <h1 id="question"></h1>
+    <div class="btn-row">
+        <button onclick="showPage(2)">YES😍</button>
+        <button id="noBtn">NO🤪</button>
+    </div>
+    <p class="hint">Don't waste your time to follow the No😅</p>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page" id="page2">
+    <img src="Images/MuviPgimg2.jpeg" class="photo" alt="Mukesh">
+    <h2>Yaaahhh! Be my forever Valentine!😘</h2>
+    <p class="p1">Oru chinna glimpse of our beautiful memories... paapomaa?</p>
+    <button class="next-btn" onclick="startSlideshow()">Kiss Me😘</button>
+    <p class="hint">Kiss Me to continue!!!</p>
+</div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page" id="page3">
+    <img id="slideImage" class="photo1">
+    <p id="caption" class="p2"></p>
+    <video id="slideVideo" class="video-player" controls style="display:none;">
+        <source src="Videos/Muvivideo1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <!-- FIX: a <button> can't contain <div>/<p>/<br> block content —
+         that broken nesting was throwing off page 3's whole layout.
+         The hint text is now a normal sibling paragraph below the button. -->
+    <button class="next-btn" id="nextPage4" style="display:none;" onclick="showPage(4)">Hug Me🫂</button>
+    <p class="hint" id="hugHint" style="display:none;">Hug Me to continue!!!</p>
+</div>
+
+<!-- ================= PAGE 4 ================= -->
+<div class="page" id="page4">
+    <h3>Hey Handsome❤️</h3>
+    <p>Type i love you babe to unlock my surprise Love letter</p>
+    <div class="input-container">
+        <input type="text" id="answer" placeholder="Type here...">
+        <button class="next-btn" onclick="submitAnswer1()">Love you💕</button>
+    </div>
+    <p class="hint">Hey Mumu!Say Love you to unlock my letter Mumu!!!</p>
+    <br>
+    <p id="errorMsg" class="error"></p>
+</div>
+
+<!-- ================= PAGE 5 ================= -->
+<div class="page" id="page5">
+    <h1>Happy Birthday My Betterhalf❤️</h1>
+    <div id="typewriter"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

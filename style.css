@@ -1,0 +1,433 @@
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* Body */
+body{
+    background:linear-gradient(135deg,#e99d7a,#ff7eb3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Pages */
+.page{
+    display:none;
+    width:90%;
+    max-width:700px;
+    background:rgb(255, 250, 253);
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.active{
+    display:block;
+}
+
+/* Heading */
+h1{
+    color:#ae1b5d;
+    font-weight:bold;
+    font-size:40px;
+    font-family:cursive;
+    text-align:center;
+    padding:1px;
+    border-radius:25px;
+    margin-bottom:15px;
+    animation: zoomBlink 1.2s infinite;
+}
+
+h2{
+    color:#ae1b5d;
+    font-weight:bold;
+    font-size:40px;
+    font-family:cursive;
+    text-align:center;
+    margin-bottom:15px;
+    animation: zoomBlink 1.2s infinite;
+}
+
+@keyframes zoomBlink{
+    0%{ transform:scale(1); opacity:1; }
+    50%{ transform:scale(1.15); opacity:0.5; }
+    100%{ transform:scale(1); opacity:1; }
+}
+
+/* Paragraph */
+p{
+    font-size:20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#444;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+/* Round Image */
+.round-img{
+    width:200px;
+    height:200px;
+    box-shadow:0 0 20px rgba(255,45,85,.5);
+    margin-bottom:20px;
+    transition:.7s;
+    object-fit:cover;
+    border-radius:30%;
+    border:5px solid white;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.round-img:hover{
+    transform:scale(1.05);
+}
+
+h3{
+    color:#462c30;
+    font-weight:bold;
+    font-size:30px;
+    font-family:cursive;
+    padding:1px;
+    border-radius:25px;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+/* Other Photos */
+.photo{
+    width:200px;
+    height:200px;
+    padding:12px;
+    border-radius:8px;
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+    transition:0.6s;
+}
+
+.photo1{
+    animation:float 3s ease-in-out infinite;
+    transition:0.5s;
+    width:180px;
+    height:250px;
+    border-radius:15px;
+    border:10px solid white;
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+    margin-bottom:20px;
+    padding:1px;
+}
+
+.photo1:hover{
+    box-shadow:0 0 40px hotpink;
+    transform:scale(1.1);
+}
+
+@keyframes float{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-12px); }
+    100%{ transform:translateY(0px); }
+}
+
+/* ==============================
+   BUTTONS — unified base style
+   Every button (YES/NO, Kiss Me, Hug Me, Love you)
+   now shares the same padding/height/radius/font
+   so nothing looks mismatched.
+============================== */
+button,
+.next-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:130px;
+    height:46px;
+    padding:0 22px;
+    background:#eba78c;
+    color:#0c0606;
+    font-family:cursive;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    transition:0.3s;
+    margin:10px;
+    box-shadow:0 8px 20px rgba(255,78,110,0.35);
+    text-align:center;
+    white-space:nowrap;
+}
+
+button:hover,
+.next-btn:hover{
+    background:#9a3c5b;
+    transform:scale(1.08);
+}
+
+/* next-btn keeps its gentle pulsing call-to-action feel,
+   but no longer has a different size/shape than other buttons */
+.next-btn{
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{ transform:scale(1); }
+    50%{ transform:scale(1.08); }
+    100%{ transform:scale(1); }
+}
+
+/* YES / NO button row */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 15px auto;
+}
+
+/* Moving NO Button — keeps unified button look,
+   only position becomes fixed so it can "run away" */
+#noBtn {
+    position: fixed;
+}
+
+/* Hint Text */
+.hint{
+    font-size:17px;
+    color:#777;
+    font-style:italic;
+    padding:1px;
+    margin-top:8px;
+}
+
+.p1{
+    font-size:25px;
+    color:#832a74;
+    font-style:italic;
+    font-family: cursive;
+    padding:1px;
+}
+
+.p2{
+    font-size:35px;
+    color:#ae1b5d;
+    font-style:italic;
+    font-family: monospace;
+    font-weight:bold;
+    padding:1px;
+}
+
+/* Text Box */
+input{
+    width:80%;
+    padding:12px;
+    font-size:18px;
+    border:2px solid #ff2d55;
+    border-radius:10px;
+    outline:none;
+}
+
+/* Typewriter — now a letter made of styled paragraphs */
+#typewriter{
+    text-align:left;
+    max-height:60vh;
+    overflow-y:auto;
+    padding:5px 6px 5px 2px;
+}
+
+/* Regular letter body lines — soft italic, easy to read */
+.letter-body{
+    font-size:16px;
+    color:#3a2327;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style:italic;
+    line-height:1.7;
+    text-align:left;
+    margin-bottom:16px;
+    min-height:1em; /* keeps layout stable while typing starts */
+}
+
+/* Small ornamental divider between sections of the letter */
+.letter-divider{
+    text-align:center;
+    font-size:18px;
+    color:#e08fae;
+    letter-spacing:10px;
+    margin:6px 0 18px 0;
+    min-height:1em;
+}
+
+/* "To my future Director..." — bold, left aligned, with an accent
+   border so it reads like a hand-underlined highlight in the letter */
+.letter-heading{
+    font-family:'Brush Script MT', cursive;
+    font-weight:bold;
+    font-size:26px;
+    color:#ae1b5d;
+    text-align:left;
+    letter-spacing:0.5px;
+    line-height:1.4;
+    margin:4px 0 18px 0;
+    padding:8px 0 8px 16px;
+    border-left:4px solid #ff8fab;
+    background:linear-gradient(90deg, rgba(255,143,171,0.12), transparent);
+    border-radius:4px;
+    min-height:1em;
+}
+
+/* Closing signature line — bold, centered, slightly larger,
+   like the flourish at the bottom of a love letter */
+.letter-closing{
+    font-family:cursive;
+    font-weight:bold;
+    font-size:20px;
+    color:#9a3c5b;
+    text-align:center;
+    line-height:1.6;
+    margin-top:14px;
+    min-height:1em;
+}
+
+.fade{
+    animation: photoAnimation 1.2s ease;
+}
+
+@keyframes fadeIn{
+    from{ opacity:0; transform:scale(0.9); }
+    to{ opacity:1; transform:scale(1); }
+}
+
+@keyframes photoAnimation{
+    0%{ opacity:0; transform:scale(.8) rotate(-12deg); }
+    50%{ opacity:1; transform:scale(1.08) rotate(4deg); }
+    100%{ opacity:1; transform:scale(1) rotate(0deg); }
+}
+
+/* Floating Hearts */
+.heart{
+    position:fixed;
+    color:#ff2d55;
+    font-size:22px;
+    pointer-events:none;
+    animation: floatHeart 3s linear forwards;
+}
+
+@keyframes floatHeart{
+    0%{ opacity:1; transform:translateY(0) scale(1); }
+    100%{ opacity:0; transform:translateY(-220px) scale(2); }
+}
+
+/* Video */
+.video-player{
+    width:700px;
+    max-width:100%;
+    height:300px;
+    border-radius:20px;
+    background:black;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    display:block;
+    margin:20px auto;
+}
+
+/* Input Container */
+.input-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:20px;
+}
+
+#answer{
+    width:250px;
+    height:46px;
+    padding:10px 16px;
+    font-size:16px;
+    border:2px solid #ff4e6e;
+    border-radius:25px;
+    outline:none;
+}
+
+.error{
+    color:rgb(244, 33, 33);
+    font-size:16px;
+    font-family: cursive;
+    margin-top:10px;
+}
+
+/* ==============================
+   PAPER FALLING EFFECT
+============================== */
+#paper-container{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:9999;
+    overflow:hidden;
+}
+
+.paper-piece{
+    position:absolute;
+    top:-40px;
+    border-radius:2px;
+    opacity:0.88;
+    pointer-events:none;
+    animation: paperFall linear forwards;
+}
+
+@keyframes heartFall{
+    0%{
+        transform:translateY(0px) translateX(0px) scale(1) rotate(0deg);
+        opacity:1;
+    }
+    25%{
+        transform:translateY(25vh) translateX(var(--sway)) scale(1.1) rotate(15deg);
+        opacity:0.9;
+    }
+    50%{
+        transform:translateY(50vh) translateX(calc(var(--sway) * -0.8)) scale(0.95) rotate(-10deg);
+        opacity:0.75;
+    }
+    75%{
+        transform:translateY(75vh) translateX(var(--sway)) scale(1.05) rotate(8deg);
+        opacity:0.5;
+    }
+    100%{
+        transform:translateY(110vh) translateX(0px) scale(0.8) rotate(0deg);
+        opacity:0;
+    }
+}
+
+@keyframes paperFall{
+    0%{
+        transform:translateY(0px) rotate(0deg) translateX(0px);
+        opacity:0.9;
+    }
+    20%{
+        transform:translateY(20vh) rotate(144deg) translateX(18px);
+        opacity:0.85;
+    }
+    40%{
+        transform:translateY(40vh) rotate(288deg) translateX(-14px);
+        opacity:0.8;
+    }
+    60%{
+        transform:translateY(60vh) rotate(432deg) translateX(20px);
+        opacity:0.7;
+    }
+    80%{
+        transform:translateY(80vh) rotate(576deg) translateX(-16px);
+        opacity:0.4;
+    }
+    100%{
+        transform:translateY(110vh) rotate(720deg) translateX(0px);
+        opacity:0;
+    }
+}
