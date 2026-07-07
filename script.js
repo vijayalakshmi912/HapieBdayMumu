@@ -695,7 +695,9 @@ const photos = [
     "Images/MuviPgimg9.jpeg",
     "Images/MuviPgimg10.jpeg",
     "Images/MuviPgimg11.jpeg",
-    "Images/MuviPgimg12.jpeg"
+    "Images/MuviPgimg12.jpeg",
+    "Images/MuviPgimg13.jpeg",
+    "Images/MuviPgimg14.jpeg"
 ];
 
 const captions = [
@@ -708,7 +710,9 @@ const captions = [
     "Forever Together💖",
     "Little version of us👶👧",
     "With him more blessed💖",
-    "Draped in black, wrapped in his love🖤✨"
+    "Draped in black, wrapped in his love🖤✨",
+    "No matter the angle, I'll always choose you. 🫶",
+    "Excessive cuddles ahead! 🤭❤️"
 ];
 
 let index    = 0;
@@ -798,7 +802,7 @@ function submitAnswer1() {
         return;
     }
 
-    if (answer.toLowerCase() !== "i love you babe") {
+    if (answer.toLowerCase() !== "i love you viji") {
         error.innerHTML = pickRandom(wrongAnswerLines);
         return;
     }
