@@ -14,6 +14,42 @@ function typeQuestion() {
 }
 
 // ==========================
+// EMOJI BURST ON BUTTON CLICK
+// (reuses the existing .heart class + floatHeart
+//  keyframe animation already defined in style.css,
+//  so no extra CSS is needed)
+// ==========================
+
+function popEmoji(emoji, event, count = 10) {
+    if (!event) return;
+    const x = event.clientX;
+    const y = event.clientY;
+
+    for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+            const el = document.createElement("div");
+            el.classList.add("heart"); // reuses existing floatHeart animation
+
+            const spreadX   = (Math.random() - 0.5) * 140; // side spread
+            const size      = 20 + Math.random() * 22;
+            const duration  = 1.8 + Math.random() * 1.4;
+
+            el.textContent = emoji;
+            el.style.left  = (x + spreadX) + "px";
+            el.style.top   = y + "px";
+            el.style.fontSize = size + "px";
+            el.style.animationDuration = duration + "s";
+
+            document.body.appendChild(el);
+
+            setTimeout(() => {
+                if (el.parentNode) el.parentNode.removeChild(el);
+            }, (duration + 0.5) * 1000);
+        }, i * 35);
+    }
+}
+
+// ==========================
 // PAPER FALLING EFFECT
 // ==========================
 
@@ -173,6 +209,7 @@ function showPage(page) {
         stopHeartFall();
         stopCouple();
         stopBalloons();
+        stopPhotoFloat();
     }
     // Page 2 → Confetti + Balloons
     else if (page == 2) {
@@ -182,6 +219,7 @@ function showPage(page) {
         stopHeartFall();
         stopCouple();
         startBalloons();
+        stopPhotoFloat();
     }
     // Page 3 → Bubbles only
     else if (page == 3) {
@@ -191,6 +229,7 @@ function showPage(page) {
         stopBalloons();
         stopFireworks();
         startCouple();
+        stopPhotoFloat();
     }
     // Page 4 → Paper falling + Bubbles
     else if (page == 4) {
@@ -200,8 +239,9 @@ function showPage(page) {
         stopBalloons();
         startPaperFall();
         startCouple();
+        stopPhotoFloat();
     }
-    // Page 5 → Hearts + confetti + Fireworks
+    // Page 5 → Hearts + confetti + Fireworks + tiny floating photos
     else if (page == 5) {
         stopPaperFall();
         stopCouple();
@@ -209,6 +249,7 @@ function showPage(page) {
         startConfetti();
         startHeartFall();
         startFireworks();
+        startPhotoFloat();
     }
 }
 
@@ -346,7 +387,7 @@ function stopFireworks() {
 // ("💖",, "💓") — that created an empty/undefined slot in the
 // array, which could randomly render the word "undefined"
 // instead of a heart emoji.
-const heartEmojis = ["❤️","💙","💜","🩷","🩵","💖","💓","💞"];
+const heartEmojis = ["❤️","💓","💞"];
 let heartInterval = null;
 
 function createFallingHeart() {
@@ -393,6 +434,60 @@ function stopHeartFall() {
     if (heartInterval) {
         clearInterval(heartInterval);
         heartInterval = null;
+    }
+}
+
+// ==========================
+// TINY FLOATING PHOTOS (Page 5)
+// Reuses the same photos[] gallery from the slideshow,
+// shown as tiny circular thumbnails floating up like the
+// hearts, using the same heartFall keyframe/animation.
+// ==========================
+
+let photoFloatInterval = null;
+
+function createFloatingPhoto() {
+    const container = document.getElementById("paper-container");
+    if (!container) return;
+
+    const el = document.createElement("img");
+    el.classList.add("floating-photo");
+    el.src = photos[Math.floor(Math.random() * photos.length)];
+
+    const size     = 34 + Math.random() * 26; // tiny thumbnail size
+    const duration = 4 + Math.random() * 4;
+    const startX   = Math.random() * 100;
+    const sway     = (Math.random() - 0.5) * 70;
+
+    el.style.cssText = `
+        left:${startX}%;
+        width:${size}px;
+        height:${size}px;
+        animation-duration:${duration}s;
+        animation-delay:${Math.random() * 0.6}s;
+        animation-name:heartFall;
+        --sway:${sway}px;
+    `;
+
+    container.appendChild(el);
+
+    setTimeout(() => {
+        if (el.parentNode) el.parentNode.removeChild(el);
+    }, (duration + 1) * 1000);
+}
+
+function startPhotoFloat() {
+    if (photoFloatInterval) return;
+    for (let i = 0; i < 10; i++) {
+        setTimeout(createFloatingPhoto, i * 300);
+    }
+    photoFloatInterval = setInterval(createFloatingPhoto, 900);
+}
+
+function stopPhotoFloat() {
+    if (photoFloatInterval) {
+        clearInterval(photoFloatInterval);
+        photoFloatInterval = null;
     }
 }
 

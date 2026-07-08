@@ -3,10 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Sliding love-word watermark, behind everything, visible on
+         every page's pink background. Purely decorative — aria-hidden. -->
+    <div class="watermark-bg" aria-hidden="true">
+        <div class="watermark-row wm-r1">
+            <span>MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ </span>
+            <span>MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ </span>
+        </div>
+        <div class="watermark-row wm-r2 wm-reverse">
+            <span>VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ </span>
+            <span>VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ </span>
+        </div>
+        <div class="watermark-row wm-r3">
+            <span>MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ </span>
+            <span>MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ </span>
+        </div>
+        <div class="watermark-row wm-r4 wm-reverse">
+            <span>LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ </span>
+            <span>LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ </span>
+        </div>
+        <div class="watermark-row wm-r5">
+            <span>MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ </span>
+            <span>MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ MUVI ✦ VIJI ✦ MUKESH ✦ LOVE BEGINS ✦ </span>
+        </div>
+        <div class="watermark-row wm-r6 wm-reverse">
+            <span>VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ </span>
+            <span>VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ VIJI ❤ MUKESH ❤ LOVE BEGINS ❤ MUVI ❤ </span>
+        </div>
+    </div>
+
     <div id="hearts-container"></div>
 
     <!-- ONE continuous song — starts on Page 1 and keeps playing all
@@ -25,7 +57,7 @@
     <img src="Images/MuviPgimg1.jpeg" class="round-img" alt="Mukesh">
     <h1 id="question"></h1>
     <div class="btn-row">
-        <button onclick="showPage(2)">YES😍</button>
+        <button onclick="popEmoji('😍', event); showPage(2)">YES😍</button>
         <button id="noBtn">NO🤪</button>
     </div>
     <p class="hint">Don't waste your time to follow the No😅</p>
@@ -36,7 +68,7 @@
     <img src="Images/MuviPgimg2.jpeg" class="photo" alt="Mukesh">
     <h2>Yaaahhh! Be my forever Valentine!😘</h2>
     <p class="p1">Oru chinna glimpse of our beautiful memories... paapomaa?</p>
-    <button class="next-btn" onclick="startSlideshow()">Kiss Me😘</button>
+    <button class="next-btn" onclick="popEmoji('😘', event); startSlideshow()">Kiss Me😘</button>
     <p class="hint">Kiss Me to continue!!!</p>
 </div>
 
@@ -51,7 +83,7 @@
     <!-- FIX: a <button> can't contain <div>/<p>/<br> block content —
          that broken nesting was throwing off page 3's whole layout.
          The hint text is now a normal sibling paragraph below the button. -->
-    <button class="next-btn" id="nextPage4" style="display:none;" onclick="showPage(4)">Hug Me🫂</button>
+    <button class="next-btn" id="nextPage4" style="display:none;" onclick="popEmoji('🫂', event); showPage(4)">Hug Me🫂</button>
     <p class="hint" id="hugHint" style="display:none;">Hug Me to continue!!!</p>
 </div>
 
@@ -61,7 +93,7 @@
     <p>Type i love you viji to unlock my surprise Love letter</p>
     <div class="input-container">
         <input type="text" id="answer" placeholder="Type here...">
-        <button class="next-btn" onclick="submitAnswer1()">Love you💕</button>
+        <button class="next-btn" onclick="popEmoji('🩷', event); submitAnswer1()">Love you💕</button>
     </div>
     <p class="hint">Hey Mumu! Say Love you to unlock my letter!!!</p>
     <br>
