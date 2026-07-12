@@ -792,7 +792,9 @@ const photos = [
     "Images/MuviPgimg11.jpeg",
     "Images/MuviPgimg12.jpeg",
     "Images/MuviPgimg13.jpeg",
-    "Images/MuviPgimg14.jpeg"
+    "Images/MuviPgimg14.jpeg",
+    "Images/MuviPgimg15.jpeg",
+    "Images/MuviPgimg16.jpeg"
 ];
 
 const captions = [
@@ -806,8 +808,10 @@ const captions = [
     "Little version of us👶👧",
     "With him more blessed💖",
     "Draped in black, wrapped in his love🖤✨",
-    "No matter the angle, I'll always choose you. 🫶",
-    "Excessive cuddles ahead! 🤭❤️"
+    "No matter the angle, I'll always choose you🫶",
+    "Excessive cuddles ahead! 🤭❤️",
+    "In every blink is a art of saying without speaking👀💖",
+    "Wandering the world with my Mumu🌍✨"
 ];
 
 let index    = 0;
@@ -861,7 +865,7 @@ function startSlideshow() {
                 restoreBgMusicVolume();
             };
         }
-    }, 4000);
+    }, 3000);
 }
 
 // ==========================
